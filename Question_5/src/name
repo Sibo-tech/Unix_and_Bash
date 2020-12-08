@@ -1,0 +1,47 @@
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
+
+class DamArrayApp {
+
+    int num = 0;
+    ObjDam[] data = new ObjDam[211];
+
+    public void populateArray() {
+        try {
+            Scanner s = new Scanner(new File("DamLevels.csv"));
+            String firstLine = s.nextLine();
+            while(s.hasNextLine()) {
+                String all = s.nextLine();
+                String[] temp = all.split(",");
+                String name = temp[2];
+                double fscNum = Double.parseDouble(temp[10]);
+                double damlvl = Double.parseDouble(temp[25]);
+                data[num] = new ObjDam(name, fscNum, damlvl);
+                num++;
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("File was not found. Please make sure the file exists!");
+
+        }
+        System.out.println(data);
+    }
+
+    public void printDam(String damName) {
+        boolean find = false;
+        for (int i = 0; i < 211; i++) {
+            ObjDam dam = data[i];
+            if (dam.getDamName() == damName) {
+                System.out.println("Dam Name: " + dam.getDamName()
+                        + ", FSC: " + dam.getFsc()
+                        + ", Dam Level: " + dam.getDamLevel());
+                find = true;
+            }
+        }
+        if (find == false) {
+            System.out.println("The dam _ you entered cannot be found in the file");
+        }
+    }
+
+    public void printAllDams() {
+    }

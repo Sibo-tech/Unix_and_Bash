@@ -1,0 +1,47 @@
+Sibongile08@LAPTOP-3R03HCBO MINGW64 ~/Desktop/Zaio_deliverables/Unix (master)
+1.
+$ mkdir Unix_test
+
+Sibongile08@LAPTOP-3R03HCBO MINGW64 ~/Desktop/Zaio_deliverables/Unix (master)
+2.
+$ cd Unix_test
+3.
+$ touch file1
+$ echo "one
+> two
+> one
+> two
+> one
+> two" file1
+4.
+$ cp file1 file2
+5.
+$ ls
+6.
+$ chmod ugo+rw file1
+$ ls -al file1
+-rw-r--r-- 1 Sibongile08 197609 24 Dec  8 14:14 file1
+7.
+$ rm file1
+$ ls
+file2
+8.
+$ head -3 file2
+one
+two
+one
+9.
+$ cat file2
+one
+two
+one
+two
+one
+two
+$ grep -o 'one' file2 | wc -l
+3
+10.
+$ ps
+      PID    PPID    PGID     WINPID   TTY         UID    STIME COMMAND
+      455     303     455       9356  cons0     197609 15:02:58 /usr/bin/ps
+      303       1     303       8804  cons0     197609 14:11:02 /usr/bin/bash
